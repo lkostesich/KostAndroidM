@@ -20,7 +20,7 @@
             android:id="@+id/resultText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='@{safeUnbox(myViewModel.result) == 0.0 ? "Enter Name" : String.valueOf(safeUnbox(myViewModel.result))}'
+            android:text='@{String.valueOf(safeUnbox(myViewModel.result))}'
             app:layout_constraintBottom_toTopOf="@+id/convertButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -33,22 +33,22 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/name"
-            android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="@={myViewModel.name}"
+            android:text="@={myViewModel.dollarValue}"
             app:layout_constraintBottom_toTopOf="@+id/resultText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/convertButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> myViewModel.addName()}"
-            android:text="@string/submit"
+            android:onClick="@{() -> myViewModel.convertValue()}"
+            android:text="@string/convert"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
