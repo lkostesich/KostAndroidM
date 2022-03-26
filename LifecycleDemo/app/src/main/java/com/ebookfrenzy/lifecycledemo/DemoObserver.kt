@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.ebookfrenzy.lifecycledemo
 
 import android.annotation.SuppressLint
@@ -15,7 +17,7 @@ class DemoObserver: LifecycleObserver {
     private var mv = MainViewModel
     @SuppressLint("SimpleDateFormat")
     val time = SimpleDateFormat("hh:mm:ss:mmm")
-    val currentDate = time.format(Date())
+    val currentDate: Any = time.format(Date())
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun onResume(){

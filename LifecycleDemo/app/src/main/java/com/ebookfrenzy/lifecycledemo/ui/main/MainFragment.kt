@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ebookfrenzy.lifecycledemo.DemoOwner
+
 import com.ebookfrenzy.lifecycledemo.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
@@ -28,7 +28,7 @@ class MainFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.main_fragment,container, false)
         binding.setLifecycleOwner(this)
        return binding.root
-    
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
