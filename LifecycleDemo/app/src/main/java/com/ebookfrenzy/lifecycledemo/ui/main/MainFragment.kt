@@ -28,17 +28,15 @@ class MainFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.main_fragment,container, false)
         binding.setLifecycleOwner(this)
        return binding.root
-    // return inflater.inflate(R.layout.main_fragment, container, false)
+    
     }
-    //private lateinit var demoOwner: DemoOwner
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.setVariable(myViewModel, viewModel)
         lifecycle.addObserver(DemoObserver())
-        //demoOwner = DemoOwner()
-        //demoOwner.startOwner()
-        //demoOwner.stopOwner()
+
     }
 
 }

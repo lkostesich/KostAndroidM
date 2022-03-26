@@ -1,54 +1,56 @@
 package com.ebookfrenzy.lifecycledemo
 
-import android.util.Log
+import android.annotation.SuppressLint
+import android.icu.text.SimpleDateFormat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import androidx.lifecycle.LifecycleOwner
+
 
 import com.ebookfrenzy.lifecycledemo.ui.main.MainViewModel
+import java.util.*
 
 class DemoObserver: LifecycleObserver {
 
     private var mv = MainViewModel
+    @SuppressLint("SimpleDateFormat")
+    val time = SimpleDateFormat("hh:mm:ss:mmm")
+    val currentDate = time.format(Date())
 
-    private val LOG_TAG = "DemoObserver"
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun onResume(){
-        //Log.i(LOG_TAG,"onResume")
-        mv.test("onResume was fired on")
+
+        mv.test("onResume was fired on" + " " + currentDate+ "\n**************\n ")
 
     }
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     fun onPause(){
-       // Log.i(LOG_TAG,"onPause")
-        mv.test("onPause was fired on")
+
+        mv.test("onPause was fired on" + " " + currentDate+ "\n**************\n ")
 
 
     }
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate(){
-        //Log.i(LOG_TAG,"onCreate")
-        mv.test("onCreate was fired on")
+
+        mv.test("onCreate was fired on" + " " + currentDate + "\n")
 
     }
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart(){
-        mv.test("onStart was fired on")
-        //Log.i(LOG_TAG,"onStart")
+        mv.test("onStart was fired on" + " " + currentDate + "\n")
+
     }
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onStop(){
-        mv.test("onStop was fired on")
-        //Log.i(LOG_TAG,"onStop")
+        mv.test("onStop was fired on" + " " + currentDate + "\n")
+
     }
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy(){
-        mv.test("onDestroy was fired on")
-    //Log.i(LOG_TAG,"onDestroy")
+        mv.test("onDestroy was fired on" + " " + currentDate+ "\n**************\n ")
+
     }
-    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
-    fun onAny(owner:LifecycleOwner, event:Lifecycle.Event){
-        Log.i(LOG_TAG, owner.lifecycle.currentState.name)
-    }
+
+
 }
