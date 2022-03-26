@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.ebookfrenzy.lifecycledemo.ui.main
 import androidx.databinding.DataBindingUtil
 import com.ebookfrenzy.lifecycledemo.R
@@ -19,21 +21,21 @@ class MainFragment : Fragment() {
     }
 
     private lateinit var viewModel: MainViewModel
-    lateinit var binding: MainFragmentBinding
+    private lateinit var binding: MainFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater,R.layout.main_fragment,container, false)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
        return binding.root
 
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         binding.setVariable(myViewModel, viewModel)
         lifecycle.addObserver(DemoObserver())
 

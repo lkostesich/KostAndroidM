@@ -12,7 +12,7 @@ class MainViewModel : ViewModel() {
     companion object{
 
         var valueN: MutableLiveData<String> = MutableLiveData()
-        var mess = ""
+        private var mess = ""
 
         fun test(msg : String){
             mess += msg
