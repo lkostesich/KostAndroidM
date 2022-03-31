@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">NavigationDemo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button">Button</string>
+    <string name="text_to_next_frag">text to next frag</string>
+    <string name="display_image_1">Display Image 1</string>
+    <string name="android_image_1">Android image 1</string>
+    <string name="textview">TextView</string>
+    <string name="android_picture">Android Picture</string>
+    <string name="display_image_2">Display Image 2</string>
+    <string name="display_image_3">Display Image 3</string>
+    <string name="android_image_2">Android Image 2</string>
+    <string name="android_image_3">Android Image 3</string>
+</resources>
