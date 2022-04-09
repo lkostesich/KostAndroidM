@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
+        MainViewModel().test()
+
 
 
         layoutManager = LinearLayoutManager(this)
