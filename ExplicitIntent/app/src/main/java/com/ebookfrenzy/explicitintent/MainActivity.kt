@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
         val i = Intent(this,SecondActivity::class.java)
         val myString = binding.editText1.text.toString()
         i.putExtra("qString", myString)
-        startActivityForResult(
-            i,
-            request_code
+        startActivity(
+            i
+
         )
     }
 

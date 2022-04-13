@@ -9,11 +9,15 @@ import com.ebookfrenzy.carddemo.databinding.ActivityMainBinding
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Intent
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
+
+
     private lateinit var binding: ActivityMainBinding
+
 
     private var layoutManager:RecyclerView.LayoutManager? = null
     private var adapter:RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
@@ -45,6 +49,14 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }*/
     }
+/*    fun sendCard(view: View){
+        val i = Intent(this,MainActivity2::class.java)
+
+        val myArray = binding.contentMain.recyclerView
+        //binding.contentMain.recyclerView.adapter.toString()
+
+    }*/
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -1,37 +1,21 @@
 package com.ebookfrenzy.carddemo
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
 import android.view.View
 import android.view.ViewGroup
+
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.ebookfrenzy.carddemo.R
-import com.google.android.material.snackbar.Snackbar
+
 
 class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-
-  /*  private val titles = arrayOf("Chapter One",
-        "Chapter Two", "Chapter Three", "Chapter Four",
-        "Chapter Five", "Chapter Six", "Chapter Seven",
-        "Chapter Eight")
-
-    private val details = arrayOf("Item one details", "Item two details",
-        "Item three details", "Item four details",
-        "Item five details", "Item six details",
-        "Item seven details", "Item eight details")
-
-    private val images = intArrayOf(R.drawable.android_image_1,
-        R.drawable.android_image_2, R.drawable.android_image_3,
-        R.drawable.android_image_4, R.drawable.android_image_5,
-        R.drawable.android_image_6, R.drawable.android_image_7,
-        R.drawable.android_image_8)*/
+    private lateinit var binding: MainActivity2
     private val data = Data()
     private val arr = MainViewModel.arr
 
-/*
-    var m = Array(7){ {Array(7) {0;1;2;3;4;5;6;7}}
-*/
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i:Int): ViewHolder {
@@ -43,8 +27,9 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
         viewHolder.itemTitle.text=data.titles[arr[i][0]]
-        viewHolder.itemDetail.text=data.details[arr[i][0]]
-        viewHolder.itemImage.setImageResource(data.images[arr[i][0]])
+        viewHolder.itemDetail.text=data.details[arr[i][1]]
+        viewHolder.itemImage.setImageResource(data.images[arr[i][2]])
+
     }
     override fun getItemCount(): Int {
         return data.titles.size
@@ -56,17 +41,31 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         var itemTitle: TextView
         var itemDetail: TextView
         init {
-            itemImage=itemView.findViewById(R.id.itemImage)
+            itemImage=itemView.findViewById(R.id.a_itemImage)
 
 
-            itemTitle=itemView.findViewById(R.id.itemTitle)
-            itemDetail=itemView.findViewById(R.id.itemDetail)
+            itemTitle=itemView.findViewById(R.id.a_itemTitle)
+            itemDetail=itemView.findViewById(R.id.a_itemDetail)
 
             itemView.setOnClickListener{v:View ->
-                var position:Int = adapterPosition //<--- getAdapterPosition()
+           val i = Intent(v.getContext(),MainActivity2::class.java)
+                i.putExtra("qString",itemTitle.text)
+                i.putExtra("qString1",itemDetail.text)
+               // i.putExtra("qString2",R.drawable.android_image_1)
+               // var num = data.images[arr[adapterPosition][2]]
+                i.putExtra("qString2", data.images[arr[adapterPosition][2]])
+                //i.putExtra("qString2",R.id.a_itemImage.toString())
+
+                //  i.putExtra("qString3",itemImage )
+                startActivity(v.context,i,null)
+
+                /*var position:Int = adapterPosition //<--- getAdapterPosition()
                 Snackbar.make(v,"Click detected on item $position",
-                Snackbar.LENGTH_LONG).setAction("Action", null).show()
+                Snackbar.LENGTH_LONG).setAction("Action", null).show()*/
             }
         }
     }
+
+
+
 }

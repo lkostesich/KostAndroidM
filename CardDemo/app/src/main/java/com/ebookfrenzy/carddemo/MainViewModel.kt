@@ -13,17 +13,17 @@ class MainViewModel {
     }
 
     fun test() {
-        val num = 7
-        var i = 0
-        while (i <= num) {
-
+        if(arr.size == 0) {
+            val num = 7
+            var i = 0
+            while (i <= num) {
 
 
                 arr.add(arrayListOf((0..7).random(), (0..7).random(), (0..7).random()))
                 i++
 
+            }
         }
-
 
 
     }
