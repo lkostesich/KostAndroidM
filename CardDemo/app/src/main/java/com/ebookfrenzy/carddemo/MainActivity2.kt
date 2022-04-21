@@ -20,10 +20,8 @@ class MainActivity2 : AppCompatActivity() {
         binding.aItemTitle.text = qString
         binding.aItemDetail.text = qString1
         binding.aItemImage.setImageResource(qString2)
-        //binding.aItemImage = qString2
-        /*if (qString2 != null) {
-            binding.aItemImage.setImageResource(qString2.toInt())
-        }*/
+    //using intent to get the key values
+        //for image had to set the qstring2 to the position in the array
     }
 
 }

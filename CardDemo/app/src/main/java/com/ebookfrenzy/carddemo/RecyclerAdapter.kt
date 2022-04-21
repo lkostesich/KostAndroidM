@@ -36,7 +36,6 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     inner class ViewHolder(itemView:View): RecyclerView.ViewHolder(itemView){
-        //var itemImage: ImageView
         var itemImage: ImageView
         var itemTitle: TextView
         var itemDetail: TextView
@@ -51,17 +50,13 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
            val i = Intent(v.getContext(),MainActivity2::class.java)
                 i.putExtra("qString",itemTitle.text)
                 i.putExtra("qString1",itemDetail.text)
-               // i.putExtra("qString2",R.drawable.android_image_1)
-               // var num = data.images[arr[adapterPosition][2]]
                 i.putExtra("qString2", data.images[arr[adapterPosition][2]])
-                //i.putExtra("qString2",R.id.a_itemImage.toString())
+                //adding the items into intent
+                //get the image at the adapterposition
 
-                //  i.putExtra("qString3",itemImage )
+                //starting activity on click
                 startActivity(v.context,i,null)
 
-                /*var position:Int = adapterPosition //<--- getAdapterPosition()
-                Snackbar.make(v,"Click detected on item $position",
-                Snackbar.LENGTH_LONG).setAction("Action", null).show()*/
             }
         }
     }
