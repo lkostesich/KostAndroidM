@@ -17,6 +17,7 @@ import com.ebookfrenzy.contactdemo.R
 
 import java.util.*
 import com.ebookfrenzy.contactdemo.databinding.MainFragmentBinding
+import java.lang.Integer.parseInt
 
 class MainFragment : Fragment() {
     private var adapter: ContactListAdapter?= null
@@ -25,7 +26,7 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    //private lateinit var viewModel: MainViewModel
+
     val viewModel:MainViewModel by viewModels()
     private var _binding:MainFragmentBinding? = null
     private val binding get() = _binding!!
@@ -34,18 +35,25 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       // return inflater.inflate(R.layout.main_fragment, container, false)
+
         _binding = MainFragmentBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         listenerSetup()
         observerSetup()
         recyclerSetup()
         // TODO: Use the ViewModel
+        adapter!!.settingListener(object: ContactListAdapter.onItemClickListener{
+            override fun onClick(id: String) {
+                var contactId: Int = parseInt(id)
+               // Log.i("zzz", "mainfrag " + id)
+                viewModel.deleteContact(contactId)
+            }
+        })
     }
 
     private fun recyclerSetup() {
@@ -67,18 +75,6 @@ class MainFragment : Fragment() {
 
             }
         }})
-
-        /*viewModel.getAllContactsASC()?.observe(viewLifecycleOwner,{contacts ->
-            contacts?.let{adapter?.setContactList(it)}
-
-        })*/
-
-
-
-        //viewModel.getSearchResults().observe(viewLifecycleOwner,Observer{contacts -> contacts?.let {
-       // adapter?.setContactList(it)
-
-       // }
 
 
     }

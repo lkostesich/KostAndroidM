@@ -36,11 +36,11 @@ class MainViewModel(application: Application):AndroidViewModel(application){
         return  allContacts
     }
    fun getAllContactsASC(){
-       /*:LiveData<List<Contact>>?*/
+
        repository.getAllASC()
     }
     fun getAllContactsDESC(){
         repository.getAllDESC()
     }
-    // TODO: Implement the ViewModel
+
 }

@@ -16,33 +16,15 @@ import com.ebookfrenzy.contactdemo.R
 class ContactListAdapter(private val contactItemLayout: Int): RecyclerView.Adapter<ContactListAdapter.ViewHolder>() {
     private var contactList: List<Contact>? = null
 
+    var listener: onItemClickListener? = null
 
-    private lateinit var listener: OnTextClickListener
-
-
-    /*internal abstract class ContactListAdapter(items: List<Contact>, listener: OnTextClickListener) :
-        RecyclerView.Adapter<ContactListAdapter.ExampleAdapter>() {
-        var items: List<Contact>
-        var listener: OnTextClickListener
-        override fun onBindViewHolder(holder: viewHolder, position: Int) {
-            viewHolder.textView.setOnClickListener(View.OnClickListener { // Say you want to pass an ExampleItem back to the fragment...
-                val data: Contact = items[position]
-                listener.onTextClick(data)
-            })
-        }
-
-        init {
-            this.items = items
-            this.listener = listener
-        }
-    }*/
+  interface onItemClickListener {
+      fun onClick(str: String)
+  }
 
 
-    internal interface OnTextClickListener {
-        fun onTextClick(data: Contact?)
-    }
-    fun onTextClick(data: Contact?){
-        Log.i("zzz", data.toString())
+    fun settingListener(listener: onItemClickListener?) {
+        this.listener = listener
     }
 
 
@@ -52,31 +34,24 @@ class ContactListAdapter(private val contactItemLayout: Int): RecyclerView.Adapt
 
         val name = holder.name
         val phone = holder.phone
-        val id = holder.id
         var trashCan = holder.trashCan
+        val contactId = holder.id
+
         contactList.let { name.text=it!![listPosition].contactName
             phone.text=it!![listPosition].phoneNumber
-            id.text= it!![listPosition].id.toString()
+            contactId.text= it!![listPosition].id.toString()
 
 
         }
-        trashCan.setOnClickListener {
+        trashCan.setOnClickListener(View.OnClickListener {
+            var id = contactId.text.toString()
+            listener?.onClick(id)
+            Log.i("zzz","contactListAdapter " + id)
+            Log.i("zzz", contactId.text.toString())
 
-            val data: Contact = contactList!![listPosition]
-           // listener.onTextClick(data)
-           // the line above crashes
-
-            // Say you want to pass an ExampleItem back to the fragment...
-              //  val data: Contact = contactList!!.get(listPosition)
-              //  listener.onTextClick(data)
+        })
 
 
-           // id1 = id.text.toString()
-           // Log.i("zzz",id.text.toString())
-            Log.i("zzz",data.id.toString())
-            Log.i("zzz",data.contactName.toString())
-
-        }
     }
 
 
@@ -101,11 +76,7 @@ class ContactListAdapter(private val contactItemLayout: Int): RecyclerView.Adapt
         var phone: TextView=itemView.findViewById(R.id.card_Phone)
         var id: TextView=itemView.findViewById(R.id.card_ID)
         var trashCan: ImageView=itemView.findViewById(R.id.image_delete)
-        /*init{
-            itemView.setOnClickListener { v:View ->
-                Log.i("zzz", "clicked")
-            }
-        }*/
+
     }
 
 

@@ -11,13 +11,13 @@ class ContactRepository(application: Application) {
     private var contactDao: ContactDao?
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     val allContacts:LiveData<List<Contact>>?
-   // val allContactsASC:LiveData<List<Contact>>?
+
 
     init{
         val db:ContactRoomDatabase?= ContactRoomDatabase.getDatabase(application)
         contactDao=db?.ContactDao()
         allContacts = contactDao?.getAllContacts()
-        //allContactsASC = contactDao?.getAllASC()
+
     }
 
 
